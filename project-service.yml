@@ -1,15 +1,16 @@
 server:
-  port: 8082
+    port: 8082
 
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/task_project
-    username: postgres
-    password: thaitoan2311
-  jpa:
-    hibernate:
-      ddl-auto: validate
-    show-sql: true
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017
+    datasource:
+        url: jdbc:postgresql://localhost:5432/task_project
+        username: postgres
+        password: thaitoan2311
+    jpa:
+        hibernate:
+            ddl-auto: validate
+        show-sql: true
+    data:
+        mongodb:
+            uri: mongodb://localhost:27017
+            database: taskify
