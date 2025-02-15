@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: taskify-config
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+log4j:
+  logger:
+    org:
+      hibernate:
+        SQL: debug
+
+logging:
+  level:
+    root: INFO
+    org:
+      hibernate:
+        SQL: DEBUG
+    com:
+      taskify: DEBUG
