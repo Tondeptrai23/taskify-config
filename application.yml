@@ -19,3 +19,11 @@ logging:
                 SQL: DEBUG
         com:
             taskify: DEBUG
+
+spring:
+    devtools:
+        restart:
+            enabled: true
+            additional-paths: src/main/java
+        livereload:
+            enabled: true
