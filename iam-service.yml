@@ -1,0 +1,12 @@
+server:
+    port: 8084
+
+spring:
+    neo4j:
+        uri: bolt://localhost:7687
+        authentication:
+            username: neo4j
+            password: thaitoan2311
+    data:
+        neo4j:
+            database: iam-service
