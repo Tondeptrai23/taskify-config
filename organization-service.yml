@@ -12,3 +12,17 @@ spring:
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.PostgreSQLDialect
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: health,info,metrics,env,loggers,refresh,prometheus
+    endpoint:
+        health:
+            show-details: when_authorized
+    health:
+        diskspace:
+            enabled: true
+        db:
+            enabled: true

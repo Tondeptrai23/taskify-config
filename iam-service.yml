@@ -10,3 +10,19 @@ spring:
     data:
         neo4j:
             database: iam-service
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: health,info,metrics,env,loggers,refresh,prometheus
+    endpoint:
+        health:
+            show-details: when_authorized
+    health:
+        diskspace:
+            enabled: true
+        db:
+            enabled: true
+        neo4j:
+            enabled: true

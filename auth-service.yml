@@ -17,3 +17,17 @@ security:
     jwt:
         secret: this-is-secret-key-for-auth-service-123
         expiration: 86400000
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: health,info,metrics,env,loggers,refresh,prometheus
+    endpoint:
+        health:
+            show-details: when_authorized
+    health:
+        diskspace:
+            enabled: true
+        db:
+            enabled: true
