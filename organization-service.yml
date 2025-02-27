@@ -23,6 +23,8 @@ management:
             show-details: when_authorized
     health:
         diskspace:
-            enabled: true
+            enabled: false
         db:
-            enabled: true
+            enabled: false
+        redis:
+            enabled: false
