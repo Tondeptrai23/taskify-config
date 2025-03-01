@@ -1,2 +1,20 @@
 server:
     port: 8080
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: health,info,metrics,env,loggers,refresh,prometheus,circuitbreakers
+    endpoint:
+        health:
+            show-details: when_authorized
+    health:
+        diskspace:
+            enabled: false
+        db:
+            enabled: false
+        redis:
+            enabled: false
+        circuitbreakers:
+            enabled: false

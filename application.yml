@@ -27,3 +27,14 @@ spring:
             additional-paths: src/main/java
         livereload:
             enabled: true
+
+services:
+    iam:
+        name: iam-service
+        url: lb://iam-service
+    auth:
+        name: auth-service
+        url: lb://auth-service
+    org:
+        name: organization-service
+        url: lb://organization-service

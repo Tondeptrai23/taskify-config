@@ -17,7 +17,7 @@ management:
     endpoints:
         web:
             exposure:
-                include: health,info,metrics,env,loggers,refresh,prometheus
+                include: health,info,metrics,env,loggers,refresh,prometheus,circuitbreakers
     endpoint:
         health:
             show-details: when_authorized
@@ -28,3 +28,5 @@ management:
             enabled: false
         redis:
             enabled: false
+        circuitbreakers:
+            enabled: true
