@@ -9,7 +9,7 @@ spring:
             password: thaitoan2311
     data:
         neo4j:
-            database: iam-service
+            database: neo4j
 
 management:
     endpoints:
