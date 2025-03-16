@@ -1,37 +1,23 @@
 server:
-    port: 8081
+  port: 8081
 
 spring:
-    datasource:
-        url: jdbc:postgresql://localhost:5432/task_user
-        username: postgres
-        password: thaitoan2311
-    jpa:
-        hibernate:
-            ddl-auto: validate
-        properties:
-            hibernate:
-                dialect: org.hibernate.dialect.PostgreSQLDialect
+  application:
+    name: auth-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/task_user
+    username: postgres
+    password: thaitoan2311
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
 security:
-    jwt:
-        secret: this-is-secret-key-for-auth-service-123
-        expiration: 86400000
-
-management:
-    endpoints:
-        web:
-            exposure:
-                include: health,info,metrics,env,loggers,refresh,prometheus,circuitbreakers
-    endpoint:
-        health:
-            show-details: when_authorized
-    health:
-        diskspace:
-            enabled: false
-        db:
-            enabled: false
-        redis:
-            enabled: false
-        circuitbreakers:
-            enabled: false
+  jwt:
+    secret: this-is-secret-key-for-auth-service-123
+    expiration: 86400000
+  refresh-token:
+    expiration: 86400000

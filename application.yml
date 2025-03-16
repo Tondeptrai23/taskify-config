@@ -1,40 +1,90 @@
-eureka:
-    client:
-        service-url:
-            defaultZone: http://localhost:8761/eureka/
-    instance:
-        prefer-ip-address: true
+# Common configuration shared by all services
 
-log4j:
-    logger:
-        org:
-            hibernate:
-                SQL: debug
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
 
 logging:
-    level:
-        root: INFO
-        org:
-            hibernate:
-                SQL: DEBUG
-        com:
-            taskify: DEBUG
+  level:
+    root: INFO
+    org:
+      hibernate:
+        SQL: DEBUG
+    com:
+      taskify: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,env,loggers,refresh,prometheus,circuitbreakers
+  endpoint:
+    health:
+      show-details: when_authorized
+  health:
+    diskspace:
+      enabled: false
+    db:
+      enabled: false
+    redis:
+      enabled: false
+    circuitbreakers:
+      enabled: false
 
 spring:
-    devtools:
-        restart:
-            enabled: true
-            additional-paths: src/main/java
-        livereload:
-            enabled: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        retry:
+          enabled: true
+          initial-interval: 1000
+          max-attempts: 3
+          max-interval: 10000
+          multiplier: 2
 
+# Service registry for inter-service communication
 services:
-    iam:
-        name: iam-service
-        url: lb://iam-service
-    auth:
-        name: auth-service
-        url: lb://auth-service
-    org:
-        name: organization-service
-        url: lb://organization-service
+  iam:
+    name: iam-service
+    url: lb://iam-service
+  auth:
+    name: auth-service
+    url: lb://auth-service
+  org:
+    name: organization-service
+    url: lb://organization-service
+
+# Centralized RabbitMQ Event Configuration
+rabbitmq:
+  # Exchange definitions
+  exchange:
+    user-events: taskify.user.events
+    membership-events: taskify.membership.events
+    organization-events: taskify.organization.events
+
+  # Queue definitions for all services
+  queue:
+    # Auth Service queues
+    auth-user-created-events: taskify.user-created.events.auth
+    auth-user-deleted-events: taskify.user-deleted.events.auth
+
+    # Organization Service queues
+    org-user-created-events: taskify.user-created.events.org
+    org-user-deleted-events: taskify.user-deleted.events.org
+
+    # IAM Service queues
+    iam-user-created-events: taskify.user-created.events.iam
+    iam-user-deleted-events: taskify.user-deleted.events.iam
+    iam-membership-added-events: taskify.membership-added.events.iam
+    iam-membership-removed-events: taskify.membership-removed.events.iam
+    iam-membership-role-updated-events: taskify.membership-role-updated.events.iam
+    iam-organization-created-events: taskify.organization-created.events.iam
+    iam-organization-updated-events: taskify.organization-updated.events.iam
+    iam-organization-deleted-events: taskify.organization-deleted.events.iam

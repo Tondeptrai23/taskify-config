@@ -1,32 +1,25 @@
 server:
-    port: 8086
+  port: 8086
 
 spring:
-    datasource:
-        url: jdbc:postgresql://localhost:5432/task_organization
-        username: postgres
-        password: thaitoan2311
-    jpa:
-        hibernate:
-            ddl-auto: validate
-        properties:
-            hibernate:
-                dialect: org.hibernate.dialect.PostgreSQLDialect
+  application:
+    name: organization-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/task_organization
+    username: postgres
+    password: thaitoan2311
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
-management:
-    endpoints:
-        web:
-            exposure:
-                include: health,info,metrics,env,loggers,refresh,prometheus,circuitbreakers
-    endpoint:
-        health:
-            show-details: when_authorized
-    health:
-        diskspace:
-            enabled: false
-        db:
-            enabled: false
-        redis:
-            enabled: false
-        circuitbreakers:
-            enabled: true
+resilience4j:
+  circuitbreaker:
+    instances:
+      iam-service:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
+        permittedNumberOfCallsInHalfOpenState: 5
