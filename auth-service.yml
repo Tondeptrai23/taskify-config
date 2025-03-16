@@ -7,7 +7,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/task_user
     username: postgres
-    password: thaitoan2311
+    password: "{cipher}729a31a826d75eddd793b02e382dc0bd7f6a5e8e8bbb7476838aa8fc410aa6a1"
   jpa:
     hibernate:
       ddl-auto: validate
@@ -17,7 +17,7 @@ spring:
 
 security:
   jwt:
-    secret: this-is-secret-key-for-auth-service-123
+    secret: "{cipher}b1d158a19dd120defae957de4032b01f80f8538ef85b6232912f4c8f2ba29e8d8f0349dea24e6cef030fbcc1cb251a85bafbc58ed8f14a60717ccf6e11ac546b"
     expiration: 86400000
   refresh-token:
     expiration: 86400000
