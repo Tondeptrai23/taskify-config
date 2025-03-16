@@ -11,4 +11,4 @@ spring:
       password: "{cipher}729a31a826d75eddd793b02e382dc0bd7f6a5e8e8bbb7476838aa8fc410aa6a1"
   data:
     neo4j:
-      database: iam-service
+      database: neo4j
