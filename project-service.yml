@@ -1,0 +1,25 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    name: project-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/task_project
+    username: postgres
+    password: "{cipher}729a31a826d75eddd793b02e382dc0bd7f6a5e8e8bbb7476838aa8fc410aa6a1"
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      iam-service:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
+        permittedNumberOfCallsInHalfOpenState: 5
