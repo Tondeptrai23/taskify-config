@@ -60,6 +60,9 @@ services:
   org:
     name: organization-service
     url: lb://organization-service
+  project:
+    name: project-service
+    url: lb://project-service
 
 # Centralized RabbitMQ Event Configuration
 rabbitmq:
@@ -94,3 +97,7 @@ rabbitmq:
     # Organization Service queues
     org-user-created: taskify.org.user.created
     org-user-deleted: taskify.org.user.deleted
+
+    # Project Service queues
+    project-user-created: taskify.user-created.events.project
+    project-user-deleted: taskify.user-deleted.events.project
