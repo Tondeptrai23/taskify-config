@@ -71,6 +71,8 @@ rabbitmq:
     user-events: taskify.user.events
     membership-events: taskify.membership.events
     organization-events: taskify.organization.events
+    project-events: taskify.project.events
+    project-membership-events: taskify.project-membership.events
 
   routing-key:
     user-created: user.created
@@ -81,6 +83,12 @@ rabbitmq:
     organization-created: organization.created
     organization-updated: organization.updated
     organization-deleted: organization.deleted
+    project-created: project.created
+    project-updated: project.updated
+    project-deleted: project.deleted
+    project-member-added: project-member.added
+    project-member-removed: project-member.removed
+    project-member-role-updated: project-member.role.updated
 
   # Queue definitions for all services
   queue:
@@ -93,6 +101,12 @@ rabbitmq:
     iam-organization-created: taskify.iam.organization.created
     iam-organization-updated: taskify.iam.organization.updated
     iam-organization-deleted: taskify.iam.organization.deleted
+    iam-project-created: taskify.iam.project.created
+    iam-project-updated: taskify.iam.project.updated
+    iam-project-deleted: taskify.iam.project.deleted
+    iam-project-member-added: taskify.iam.project-member.added
+    iam-project-member-removed: taskify.iam.project-member.removed
+    iam-project-member-role-updated: taskify.iam.project-member.role.updated
 
     # Organization Service queues
     org-user-created: taskify.org.user.created
