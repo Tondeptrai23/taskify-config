@@ -1,0 +1,23 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: auth-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/task_user
+    username: postgres
+    password: "{cipher}c4ddfcc6d3e84d7db5a41a09bddfa43bdd9b3842fa89b65866d5a9d0f41cd5b8"
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+security:
+  jwt:
+    secret: "{cipher}33809d139a985d3cb441b51983e605eb17c10d25c8c2bc9985ece7b959ceca4aa22042b69491ea1c41d79d9dc5b27629"
+    expiration: 86400000
+  refresh-token:
+    expiration: 86400000
