@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: auth-service
+  profiles:
+    active: default
   datasource:
     url: jdbc:postgresql://localhost:5432/task_user
     username: postgres
